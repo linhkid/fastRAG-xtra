@@ -44,6 +44,7 @@ def haystack_is_ready():
     except Exception as e:
         logging.exception(e)
         sleep(1)  # To avoid spamming a non-existing endpoint at startup
+        print(e)
     return False
 
 

@@ -134,5 +134,6 @@ dmypy.json
 /.vscode/
 /outputs/
 /__main__
+.idea/
 
 .DS_Store

@@ -41,7 +41,7 @@ def get_app() -> FastAPI:
     from .config import ROOT_PATH
 
     app = FastAPI(
-        title="fasrRAG REST API",
+        title="fastRAG REST API",
         debug=True,
         version=fastrag_version,
         root_path=ROOT_PATH,
