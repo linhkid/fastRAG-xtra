@@ -1,8 +1,13 @@
 chat_model:
   model_kwargs:
-    device_map: {"": 0}
-    model_max_length: 4096
-    task_name: text-generation
-  model_name_or_path: meta-llama/Llama-2-7b-chat-hf
-  use_gpu: true
+    torch_dtype: "auto"
+
+    #device_map: {"": 0}
+    #model_max_length: 4096
+    #task_name: text-generation
+  #model_name_or_path: meta-llama/Llama-2-7b-chat-hf
+  model_name_or_path: "Intel/fid_flan_t5_base_nq"
+  invocation_layer_class: fastrag.prompters.invocation_layers.fid.FiDHFLocalInvocationLayer
+  use_gpu: false
 doc_pipeline_file: "config/empty_retrieval_pipeline.yaml"
+#meta-llama/Llama-2-7b-chat-hf

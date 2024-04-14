@@ -7,7 +7,7 @@ components:
   type: ElasticsearchDocumentStore
 - name: Retriever
   params:
-    document_store: Store
+    document_store: DocumentStore
     top_k: 10
   type: BM25Retriever
 - name: Reranker
@@ -21,14 +21,14 @@ components:
   params:
     model_kwargs:
         model_kwargs:
-            device_map: {"": 0}
-            torch_dtype: torch.bfloat16
+            #device_map: {"": 0}
+            torch_dtype: "auto"
             do_sample: false
         generation_kwargs:
             max_length: 10
     model_name_or_path: "Intel/fid_flan_t5_base_nq"
     invocation_layer_class: fastrag.prompters.invocation_layers.fid.FiDHFLocalInvocationLayer
-    use_gpu: true
+    use_gpu: false
   type: PromptModel
 - name: AnswerParser
   params: {}
@@ -55,4 +55,4 @@ pipelines:
   - inputs:
     - Reranker
     name: Reader
-version: 1.12.2
+version: 1.23.0

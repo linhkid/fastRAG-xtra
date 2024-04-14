@@ -51,12 +51,13 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     path = os.getcwd()
-
+    print(path)
     s_pid = "NA"
     if not args.only_ui:
         # Create REST server
-        cmd = f"python -m fastrag.rest_api.application --config={path}/config/TASKCONFIGURATION"
+        cmd = f"python -m fastrag.rest_api.application --config={path}/config/TASKCONFIGURATION --app_type qa"
         cmd = cmd.replace("TASKCONFIGURATION", TASKS[args.task_config])
+        print(TASKS[args.task_config])
         print("Launching fastRAG pipeline service...")
         run_service(cmd)
         time.sleep(10)
@@ -66,6 +67,7 @@ if __name__ == "__main__":
     os.environ["API_ENDPOINT"] = f"{args.endpoint}"
     cmd = f"python -m streamlit run {path}/fastrag/ui/SCREEN.py"
     cmd = cmd.replace("SCREEN", SCREENS[args.task_config])
+    print(args.task_config)
     print("Launching UI...")
     time.sleep(3)
     run_service(cmd)
